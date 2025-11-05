@@ -5,7 +5,8 @@ function Form() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        feedback: "",
+        phone: "",
+        contact: "",
     });
 
     function handleChange(e) {
@@ -15,10 +16,10 @@ function Form() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        alert("Thanks for feedback");
+        alert("Thanks for reaching out");
     }
 
-    const isFormValid = formData.name && formData.email && formData.feedback;
+    const isFormValid = formData.name && formData.email && formData.contact;
 
     return (
         <div className="container">
@@ -31,11 +32,15 @@ function Form() {
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required/>
                 </label>
                 <br />
+                <label>Phone:
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required/>
+                </label>
+                <br />
                 <label>Feedback: 
-                    <textarea type="text" name="feedback" maxLength="200" value={formData.feedback} onChange={handleChange} required />
+                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} required />
                 </label>
                 <div className="char-counter">
-                    {formData.feedback.length} / 200 characters
+                    {formData.contact.length} / 200 characters
                 </div>
                 <br />
                 <button type="submit" disabled={!isFormValid}>
