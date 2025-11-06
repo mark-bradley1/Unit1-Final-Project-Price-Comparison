@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 function Form() {
 
@@ -37,15 +38,18 @@ function Form() {
                 </label>
                 <br />
                 <label>Feedback: 
-                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} required />
+                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="80" required />
                 </label>
                 <div className="char-counter">
                     {formData.contact.length} / 200 characters
                 </div>
                 <br />
-                <button type="submit" disabled={!isFormValid}>
-                    Submit
-                </button>
+                <Button
+                    id="submit"
+                    type="submit"
+                    label="submit"
+                    handleClick={handleSubmit}
+                />
             </form>
         </div>
     )
