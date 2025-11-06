@@ -4,7 +4,7 @@ const NavMenu = () => {
     return (
         <div className="nav-menu">
             <Link className="link" to="/">
-                Main
+                Home
             </Link>
             <Link className="link" to="/about">
                 About
