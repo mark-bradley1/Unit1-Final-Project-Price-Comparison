@@ -14,14 +14,15 @@ function App() {
   return (
     <>
      <Header />
-     <ContactPage />
-     {/* <Routes>
+     <Router>
+       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
+        {/* <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/comparison" element={<ComparisonPage />} />
-     </Routes> */}
+        <Route path="/comparison" element={<ComparisonPage />} /> */}
+     </Routes>
+     </Router>
      <Footer />
     </>
   )
