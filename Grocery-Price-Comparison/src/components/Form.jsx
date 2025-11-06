@@ -38,7 +38,7 @@ function Form() {
                 </label>
                 <br />
                 <label>Feedback: 
-                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="75" required />
+                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="80" required />
                 </label>
                 <div className="char-counter">
                     {formData.contact.length} / 200 characters
