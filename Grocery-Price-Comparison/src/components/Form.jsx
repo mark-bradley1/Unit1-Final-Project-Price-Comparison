@@ -45,10 +45,10 @@ function Form() {
                 </div>
                 <br />
                 <Button
-                    id="submit"
                     type="submit"
-                    label="submit"
-                    handleClick={handleSubmit}
+                    label="Submit"
+                    onClick={handleSubmit}
+                    className="submit-btn"
                 />
             </form>
         </div>
