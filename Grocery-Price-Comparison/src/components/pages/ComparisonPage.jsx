@@ -1,6 +1,7 @@
 import Dropdown from "../Dropdown";
 import React, { useState, useEffect } from "react";
 import groceryItems from "../data/groceryItems.json";
+import Button from "../Button";
 
 const ComparisonPage = () => {
   const [selectedStores, setSelectedStores] = useState([]);
@@ -37,12 +38,12 @@ const ComparisonPage = () => {
 
     setSubmittedTerm(searchTerm);
 
-    const filtered = groceryItems.filter((item) => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    const filtered = groceryItems.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  setFilteredItems(filtered);
-  }
+    setFilteredItems(filtered);
+  };
 
   return (
     <div>
@@ -56,7 +57,11 @@ const ComparisonPage = () => {
           {selectedStores.map((store) => (
             <span key={store}>
               {store}{" "}
-              <button onClick={() => handleRemoveStore(store)}>X</button>
+              <Button
+                label="X"
+                onClick={() => handleRemoveStore(store)}
+                className="remove-store-btn"
+              />
             </span>
           ))}
         </div>
@@ -64,54 +69,58 @@ const ComparisonPage = () => {
 
       <form onSubmit={handleSubmit}>
         <input
-        type="text"
-        placeholder="Search for an item..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+          type="text"
+          placeholder="Search for an item..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button
-        type="submit"
-        >Search</button>
+        <Button type="submit" label="Search" className="search-btn" />
       </form>
       {submittedTerm && filteredItems.length > 0 && (
         <div>
-        <h3>Showing results for "<em>{submittedTerm}</em>"</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              {selectedStores.map((store) => (
-                <th
-                key={store}
-                >{store}</th>
+          <h3>
+            Showing results for "<em>{submittedTerm}</em>"
+          </h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                {selectedStores.map((store) => (
+                  <th key={store}>{store}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredItems.map((item) => (
+                <tr key={item.id}>
+                  <td>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      width="100"
+                      height="100"
+                    />
+                    {item.name}
+                  </td>
+                  {selectedStores.map((store) => (
+                    <td key={store}>
+                      {item[store] ? (
+                        `$${item[store].toFixed(2)}`
+                      ) : (
+                        <em>N/A</em>
+                      )}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredItems.map((item) => (
-            <tr key={item.id}>
-              <td>
-                <img
-                src={item.image}
-                alt={item.name}
-                width="100"
-                height="100"
-                />
-                {item.name}
-              </td>
-              {selectedStores.map((store) => (
-                <td key={store}>
-                  {item[store] ? `$${item[store].toFixed(2)}` : <em>N/A</em>}
-                </td>
-              ))}
-            </tr>
-            ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
         </div>
       )}
       {submittedTerm && filteredItems.length === 0 && (
-        <p>No items found for "<em>{submittedTerm}</em></p>
+        <p>
+          No items found for "<em>{submittedTerm}</em>
+        </p>
       )}
     </div>
   );
