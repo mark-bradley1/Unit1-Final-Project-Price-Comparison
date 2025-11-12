@@ -48,7 +48,7 @@ const ComparisonPage = () => {
 
   return (
     <div>
-      <h2>Comparison Page</h2>
+      <h1>Comparison Page</h1>
 
       <h4>Select stores to compare: </h4>
       <Dropdown stores={storeNames} onSelect={handleAddStore} />
