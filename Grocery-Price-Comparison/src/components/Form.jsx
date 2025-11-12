@@ -24,6 +24,7 @@ function Form() {
 
     return (
         <div className="container">
+        <h2>Please submit any question, comment or suggestion below!</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <label>Name:
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
@@ -37,7 +38,7 @@ function Form() {
                     <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required/>
                 </label>
                 <br />
-                <label>Feedback: 
+                <label>Message: 
                     <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="80" required />
                 </label>
                 <div className="char-counter">

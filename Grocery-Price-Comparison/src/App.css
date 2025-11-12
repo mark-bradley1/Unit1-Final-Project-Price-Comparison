@@ -1,0 +1,289 @@
+/* === Global Styles === */
+html, body {
+    font-size: clamp(14px, 2vw, 16px);
+    height: 100%;
+}
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/images/store-aisle.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+main {
+    flex: 1;
+}
+
+#body-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #055458;
+  color: #fff;
+  font-family: "Radley", serif;
+  width: 100%;
+  padding: 15px clamp(20px, 4vw, 30px) 20px;
+}
+
+#head {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+#foot {
+  font-size: 0.9rem;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 100;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+main {
+  flex: 1;
+  min-height: 70vh;
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #2d3e50;
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #ffd166;
+  text-decoration: underline;
+}
+
+
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === Dropdown === */
+select {
+  padding: 0.5rem 0.75rem;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 3px solid #3c6e71;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3c6e71;
+  box-shadow: 0 0 3px #3c6e71;
+}
+
+button:not(#remove-btn) {
+  background-color: #3c6e71;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #2f5456;
+}
+
+.remove-store-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  padding: 0.1rem;
+}
+
+.remove-btn-icon {
+    color: rgb(233, 93, 93);
+}
+
+.remove-btn-icon:hover {
+    color: #b72c38
+}
+
+.store-name {
+    background-color: #3c6e71;
+    border-radius: 6px;
+    padding: 0.1rem;
+    margin: 3px;
+    color: #fff;
+    font-family:'Courier New', Courier, monospace
+}
+
+.search-btn {
+  margin-left: 0.5rem;
+}
+
+.search-form {
+    margin-top: 1.5rem;
+}
+
+.search-box {
+    border: 3px solid #3c6e71;
+    padding: 5px;
+    border-radius: 6px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+/* === Comparison Page Table === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: #fff;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+th {
+  background-color: #3c6e71;
+  color: #fff;
+}
+
+td img {
+  display: block;
+  margin: 0 auto 0.5rem;
+  border-radius: 5px;
+}
+
+/* === Contact Form === */
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#contact-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 15px clamp(20px, 4vw, 30px) 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #3c6e71;
+  box-shadow: 0 0 4px #3c6e71;
+}
+
+.char-counter {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.submit-btn {
+  background-color: #3c6e71;
+  font-weight: bold;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #284b63;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-content,
+  .container {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  td img {
+    width: 80px;
+    height: 80px;
+  }
+}

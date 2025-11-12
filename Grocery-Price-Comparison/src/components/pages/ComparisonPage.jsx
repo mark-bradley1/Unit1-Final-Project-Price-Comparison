@@ -2,6 +2,7 @@ import Dropdown from "../Dropdown";
 import React, { useState, useEffect } from "react";
 import groceryItems from "../data/groceryItems.json";
 import Button from "../Button";
+import RemoveBtn from "../RemoveBtn";
 
 const ComparisonPage = () => {
   const [selectedStores, setSelectedStores] = useState([]);
@@ -55,10 +56,10 @@ const ComparisonPage = () => {
         <div>
           <h3>Comparing: </h3>
           {selectedStores.map((store) => (
-            <span key={store}>
+            <span key={store} className="store-name">
               {store}{" "}
-              <Button
-                label="X"
+              <RemoveBtn
+              id="remove-btn"
                 onClick={() => handleRemoveStore(store)}
                 className="remove-store-btn"
               />
@@ -67,8 +68,9 @@ const ComparisonPage = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
+          className="search-box"
           type="text"
           placeholder="Search for an item..."
           value={searchTerm}
