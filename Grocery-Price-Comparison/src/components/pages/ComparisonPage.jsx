@@ -56,7 +56,7 @@ const ComparisonPage = () => {
 
   return (
     <div>
-      <h1 id="comp-page">Comparison Page</h1>
+      <h1 id="comp-page">Comparison Tool</h1>
 
       <h4>Select stores to compare: </h4>
       <Dropdown stores={storeNames} onSelect={handleAddStore} />

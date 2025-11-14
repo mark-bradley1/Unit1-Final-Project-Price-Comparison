@@ -47,6 +47,7 @@ footer {
   font-family: "Radley", serif;
   width: 100%;
   padding: 15px clamp(20px, 4vw, 30px) 20px;
+  position: relative;
 }
 
 #head {
@@ -57,6 +58,12 @@ footer {
 
 #foot {
   font-size: 0.9rem;
+}
+
+#github {
+  position: absolute;
+  left: 30px;
+  top: 10px;
 }
 
 .nav-menu {
@@ -136,12 +143,15 @@ button:not(#remove-btn) {
   padding: 0.3rem 1rem;
   font-size: 1rem;
   font-family: "Volkhov", serif;
-  cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
-  background-color: #2f5456;
+button:not(#remove-btn):not(:disabled) {
+  cursor: pointer;
+}
+
+button:hover:not(#remove-btn):not(:disabled) {
+  background-color: #203031;
 }
 
 .remove-store-btn {
@@ -189,9 +199,11 @@ button:hover {
 
 /* === Comparison Page Table === */
 #comp-page {
-    background-color: #3c6e71;
-    color: #fff;
-    padding-left: 9px;
+  background-color: #0e4547;
+  color: #fff;
+  padding-left: 9px;
+  border-radius: 6px;
+  padding-bottom: 3px;
 }
 .results-container {
   margin-top: 20px;
@@ -268,10 +280,6 @@ button:hover {
   transition: background 0.3s;
 }
 
-.add-to-cart-btn:hover {
-  background-color: #125a9c;
-}
-
 /* === Contact Form === */
 .container {
   max-width: 700px;
@@ -287,7 +295,7 @@ button:hover {
   flex-direction: column;
   text-align: center;
   padding: 15px clamp(20px, 4vw, 30px) 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
 }
 
 address {
@@ -342,15 +350,11 @@ address a:hover {
   width: 100%;
 }
 
-.submit-btn:hover:not(:disabled) {
-  background-color: #284b63;
-}
-
 .submit-btn:disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    opacity: 0.7;
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* === Responsive Design === */
