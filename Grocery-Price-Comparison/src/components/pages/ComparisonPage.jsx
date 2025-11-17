@@ -46,7 +46,6 @@ const ComparisonPage = () => {
       const itemName = item.name.toLowerCase();
       const term = searchTerm.toLowerCase();
 
-      
       const regex = new RegExp(`\\b${term}`, "i");
       return regex.test(itemName);
     });
