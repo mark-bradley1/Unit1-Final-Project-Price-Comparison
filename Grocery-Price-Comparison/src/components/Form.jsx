@@ -20,7 +20,7 @@ function Form() {
         alert("Thanks for reaching out");
     }
 
-    const isFormValid = formData.name && formData.email && formData.contact;
+    const isFormValid = formData.name && formData.email && formData.phone && formData.contact;
 
     return (
         <div className="container">
@@ -39,7 +39,7 @@ function Form() {
                 </label>
                 <br />
                 <label>Message: 
-                    <textarea type="text" name="feedback" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="80" required />
+                    <textarea type="text" name="contact" maxLength="200" value={formData.contact} onChange={handleChange} rows="10" cols="80" required />
                 </label>
                 <div className="char-counter">
                     {formData.contact.length} / 200 characters
@@ -50,6 +50,7 @@ function Form() {
                     label="Submit"
                     onClick={handleSubmit}
                     className="submit-btn"
+                    disabled={!isFormValid}
                 />
             </form>
         </div>

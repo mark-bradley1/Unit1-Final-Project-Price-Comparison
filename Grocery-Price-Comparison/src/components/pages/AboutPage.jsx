@@ -2,7 +2,7 @@ const AboutPage = () => {
   return (
     <main>
       <div className="main-content">
-        <h1>About the Comparision Tool</h1>
+        <h1 className="title">About the Comparision Tool</h1>
         <p>
           I first came up with the idea for a grocery price comparison after I
           started working for a grocery store. Prior to this I had always
