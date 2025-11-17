@@ -2,7 +2,7 @@ const HomePage = () => {
     return (
         <main>
             <div className="main-content">
-                <h1>Welcome to the Grocery Price Comparison Tool!</h1>
+                <h1 className="title">Welcome to the Grocery Price Comparison Tool!</h1>
                 <p>
                     Have you ever looked at your grocery receipt and wondered "Am I paying to much?"
                 </p>
