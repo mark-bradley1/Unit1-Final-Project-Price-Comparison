@@ -3,9 +3,7 @@ import RemoveBtn from "../RemoveBtn";
 const CartPage = ({ cart, removeFromCart }) => {
   // Group items by store
   const storeGroups = cart.reduce((groups, item) => {
-    if (!groups[item.store]) {
-      groups[item.store] = [];
-    }
+    if (!groups[item.store]) groups[item.store] = [];
     groups[item.store].push(item);
     return groups;
   }, {});
@@ -16,17 +14,25 @@ const CartPage = ({ cart, removeFromCart }) => {
 
       {cart.length === 0 && <p>Your cart is empty.</p>}
 
-      {/* Loop through stores */}
-      {Object.keys(storeGroups).map((store) => (
-        <div key={store} className="store-section">
-          {/* Store header */}
-          <h2 className="store-title">{store}</h2>
+      {Object.keys(storeGroups).map((store) => {
+        // Calculate total for this store
+        const storeTotal = storeGroups[store].reduce(
+          (sum, item) => sum + (item.price || 0),
+          0
+        );
+
+        return (
+          <div key={store} className="store-section">
+            {/* Store header with total */}
+            <h2 className="store-title">
+              {store} — Total: ${storeTotal.toFixed(2)}
+            </h2>
 
           {/* Item list for this store */}
           {storeGroups[store].map((item) => (
             <div key={item.id} className="cart-card">
               <div className="cart-info">
-                {item.name} Price:{" "}
+                {item.name}: Price:{" "}
                 {item.price ? `$${item.price.toFixed(2)}` : "N/A"}
                 <RemoveBtn
                   id="remove-btn"
@@ -37,7 +43,8 @@ const CartPage = ({ cart, removeFromCart }) => {
             </div>
           ))}
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

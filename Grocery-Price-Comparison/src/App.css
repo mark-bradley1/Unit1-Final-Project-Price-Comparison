@@ -293,7 +293,7 @@ button:hover:not(#remove-btn):not(:disabled) {
 .store-title {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #686666;
   padding-bottom: 4px;
 }
 
