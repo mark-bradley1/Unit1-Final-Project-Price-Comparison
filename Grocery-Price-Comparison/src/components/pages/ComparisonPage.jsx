@@ -4,13 +4,14 @@ import groceryItems from "../data/groceryItems.json";
 import Button from "../Button";
 import RemoveBtn from "../RemoveBtn";
 
-const ComparisonPage = () => {
+const ComparisonPage = ({ addToCart }) => {
   const [selectedStores, setSelectedStores] = useState([]);
   const [storeNames, setStoreNames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [submittedTerm, setSubmittedTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
 
+  // Separating out the store names from the JSON data
   useEffect(() => {
     const firstItem = groceryItems[0];
     const storeKeys = Object.keys(firstItem).filter(
@@ -19,12 +20,14 @@ const ComparisonPage = () => {
     setStoreNames(storeKeys);
   }, []);
 
+  // Adding multiple stores to search from
   const handleAddStore = (store) => {
     if (!selectedStores.includes(store)) {
       setSelectedStores((prev) => [...prev, store]);
     }
   };
 
+  // Give ability to remove one store at a time
   const handleRemoveStore = (store) => {
     setSelectedStores((prev) => prev.filter((s) => s !== store));
   };
@@ -39,9 +42,6 @@ const ComparisonPage = () => {
 
     setSubmittedTerm(searchTerm);
 
-    // const filtered = groceryItems.filter((item) =>
-    //   item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    // );
     const filtered = groceryItems.filter((item) => {
       const itemName = item.name.toLowerCase();
       const term = searchTerm.toLowerCase();
@@ -68,7 +68,7 @@ const ComparisonPage = () => {
               <RemoveBtn
                 id="remove-btn"
                 onClick={() => handleRemoveStore(store)}
-                className="remove-store-btn"
+                className="remove-option-btn"
               />
             </span>
           ))}
@@ -110,9 +110,10 @@ const ComparisonPage = () => {
                     <Button
                       label="Add to Cart"
                       className="add-to-cart-btn"
-                      onClick={() =>
+                      onClick={() => {
+                        addToCart(item, store)
                         alert(`Added ${item.name} from ${store} to cart!`)
-                      }
+                      }}
                     />
                   </div>
                 ))}
