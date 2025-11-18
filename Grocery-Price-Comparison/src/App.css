@@ -203,7 +203,7 @@ button:hover:not(#remove-btn):not(:disabled) {
   font-family: "Volkhov", serif;
 }
 
-/* === Comparison Page Table === */
+/* === Comparison Page === */
 #comp-page {
   background-color: #0e4547;
   color: #fff;
@@ -283,6 +283,30 @@ button:hover:not(#remove-btn):not(:disabled) {
   padding: 6px 12px;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+.added {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  opacity: 0.9;
+  z-index: 999;
+  font-size: 14px;
+  animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 0.9; transform: translateY(0); }
+}
+
+@keyframes fadeout {
+  from { opacity: 0.9; }
+  to   { opacity: 0; }
 }
 
 /* === Cart Page === */
@@ -380,6 +404,22 @@ address a:hover {
   color: #666;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* === Spinner === */
+.spinner {
+  border: 6px solid #f3f3f3; 
+  border-top: 6px solid #333; 
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto; 
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* === Responsive Design === */

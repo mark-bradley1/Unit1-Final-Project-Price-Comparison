@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import groceryItems from "../data/groceryItems.json";
 import Button from "../Button";
 import RemoveBtn from "../RemoveBtn";
+import Spinner from "../Spinner";
 
 const ComparisonPage = ({ addToCart }) => {
   const [selectedStores, setSelectedStores] = useState([]);
@@ -10,8 +11,11 @@ const ComparisonPage = ({ addToCart }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [submittedTerm, setSubmittedTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [addedMessage, setAddedMessage] = useState("");
 
   // Separating out the store names from the JSON data
+  // Use of React hooks
   useEffect(() => {
     const firstItem = groceryItems[0];
     const storeKeys = Object.keys(firstItem).filter(
@@ -21,6 +25,7 @@ const ComparisonPage = ({ addToCart }) => {
   }, []);
 
   // Adding multiple stores to search from
+  // Event handlers: handleAddStore, handleRemoveStore, handleSubmit
   const handleAddStore = (store) => {
     if (!selectedStores.includes(store)) {
       setSelectedStores((prev) => [...prev, store]);
@@ -39,42 +44,46 @@ const ComparisonPage = ({ addToCart }) => {
       alert("Please select at least one store and enter an item to search.");
       return;
     }
+    setFilteredItems([]);
+    setSubmittedTerm("");
+    setIsLoading(true);
 
-    setSubmittedTerm(searchTerm);
+    setTimeout(() => {
+      const filtered = groceryItems.filter((item) => {
+        const itemName = item.name.toLowerCase();
+        const term = searchTerm.toLowerCase();
 
-    const filtered = groceryItems.filter((item) => {
-      const itemName = item.name.toLowerCase();
-      const term = searchTerm.toLowerCase();
-
-      const regex = new RegExp(`\\b${term}`, "i");
-      return regex.test(itemName);
-    });
-
-    setFilteredItems(filtered);
+        const regex = new RegExp(`\\b${term}`, "i");
+        return regex.test(itemName);
+      });
+      setFilteredItems(filtered);
+      setSubmittedTerm(searchTerm);
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
     <div>
       <h1 id="comp-page">Comparison Tool</h1>
-
       <h4>Select stores to compare: </h4>
-      <Dropdown stores={storeNames} onSelect={handleAddStore} />
+      {/* Child component */}
+      <Dropdown stores={storeNames} onSelect={handleAddStore} />{" "}
+      {/*Data passed to child*/}
       {selectedStores.length > 0 && (
         <div>
           <h3>Comparing: </h3>
           {selectedStores.map((store) => (
             <span key={store} className="store-option">
-              {store}{" "}
+              {store} {/* Child component */}
               <RemoveBtn
                 id="remove-btn"
-                onClick={() => handleRemoveStore(store)}
+                onClick={() => handleRemoveStore(store)} // Data passed to child
                 className="remove-option-btn"
               />
             </span>
           ))}
         </div>
       )}
-
       <form onSubmit={handleSubmit} className="search-form">
         <input
           className="search-box"
@@ -83,7 +92,10 @@ const ComparisonPage = ({ addToCart }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        {/* Child Component */}
         <Button type="submit" label="Search" className="search-btn" />
+
+        {isLoading && <Spinner />}
       </form>
       {submittedTerm && filteredItems.length > 0 && (
         <div className="results-container">
@@ -107,12 +119,22 @@ const ComparisonPage = ({ addToCart }) => {
                         <em>N/A</em>
                       )}
                     </span>
+                    {addedMessage && (
+                      <div className="added">{addedMessage}</div>
+                    )}
+                    {/* Child component */}
                     <Button
                       label="Add to Cart"
                       className="add-to-cart-btn"
                       onClick={() => {
-                        addToCart(item, store)
-                        alert(`Added ${item.name} from ${store} to cart!`)
+                        addToCart(item, store); // Data passed to child
+                        setAddedMessage(
+                          `Added ${item.name} from ${store} to cart!`
+                        );
+
+                        setTimeout(() => {
+                          setAddedMessage("");
+                        }, 1500);
                       }}
                     />
                   </div>
@@ -122,7 +144,6 @@ const ComparisonPage = ({ addToCart }) => {
           ))}
         </div>
       )}
-
       {submittedTerm && filteredItems.length === 0 && (
         <p>
           No items found for "<em>{submittedTerm}</em>"
