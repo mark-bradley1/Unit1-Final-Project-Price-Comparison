@@ -160,7 +160,7 @@ button:hover:not(#remove-btn):not(:disabled) {
   background-color: #203031;
 }
 
-.remove-store-btn {
+.remove-option-btn {
   background: transparent;
   border: none;
   font-size: 0.8rem;
@@ -283,6 +283,26 @@ button:hover:not(#remove-btn):not(:disabled) {
   padding: 6px 12px;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+/* === Cart Page === */
+.store-section {
+  margin-bottom: 2rem;
+}
+
+.store-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.cart-card {
+   font-family: "Volkhov", serif;
+  padding: 10px;
+  background: #f8f8f8;
+  margin-bottom: 8px;
+  border-radius: 6px;
 }
 
 /* === Contact Form === */
