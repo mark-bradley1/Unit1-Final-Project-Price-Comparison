@@ -11,16 +11,16 @@ const HomePage = () => {
                     All you need to do is add your local stores and search for an item. 
                 </p>
                 {/* Lists */}
-                <p className="feature-list">
+                <div className="feature-list">
                     <strong>This tool will allow you to:</strong>
                     <ul>
-                        <li>Choose different stores to search their products.</li>
-                        <li>Add items to a cart.</li>
-                        <li>See the items you have selected, separated by store.</li>
-                        <li>View the total from each store.</li>
-                        <li>Remove items from your cart.</li>
+                        <li id="li1">Choose different stores to search their products.</li>
+                        <li id="li2">Add items to a cart.</li>
+                        <li id="li3">See the items you have selected, separated by store.</li>
+                        <li id="li4">View the total from each store.</li>
+                        <li id="li5">Remove items from your cart.</li>
                     </ul>
-                </p>
+                </div>
             </div>
         </main>
     )

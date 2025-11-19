@@ -49,12 +49,14 @@ const ComparisonPage = ({ addToCart }) => {
     setIsLoading(true);
 
     setTimeout(() => {
-      const filtered = groceryItems.filter((item) => {
-        const itemName = item.name.toLowerCase();
+
+      // Initial problem area
+      const filtered = groceryItems.filter((item) => { // loop through items in groceryItems
+        const itemName = item.name.toLowerCase(); // allows for case-insensitive
         const term = searchTerm.toLowerCase();
 
-        const regex = new RegExp(`\\b${term}`, "i");
-        return regex.test(itemName);
+        const regex = new RegExp(`\\b${term}`, "i"); // creating a regular expression and the \\b will match only if the term is at the start of a word, "i" is for case-insensitive
+        return regex.test(itemName); // checks weather the items's name matches the pattern and either keeps it or filters it out
       });
       setFilteredItems(filtered);
       setSubmittedTerm(searchTerm);
