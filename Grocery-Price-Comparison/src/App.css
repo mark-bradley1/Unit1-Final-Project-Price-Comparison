@@ -27,6 +27,10 @@ body::before {
   z-index: -1;
 }
 
+#root {
+  width: 100%
+}
+
 main {
   flex: 1;
 }
