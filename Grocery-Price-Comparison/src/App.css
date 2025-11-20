@@ -3,7 +3,9 @@ html,
 body {
   font-size: clamp(14px, 2vw, 16px);
   height: 100%;
+  overflow-x: hidden;
 }
+
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #f7f9fc;
@@ -28,7 +30,7 @@ body::before {
 }
 
 #root {
-  width: 100%
+  width: 100%;
 }
 
 main {
@@ -105,27 +107,27 @@ p {
   line-height: 1.6;
   margin-bottom: 2rem;
   font-family: "Lexend Giga", san-serif;
-  font-size: 15px
+  font-size: 15px;
 }
 
 #li1 {
-  list-style-image: url('../public/icon-images/bacon.svg')
+  list-style-image: url("../public/icon-images/bacon.svg");
 }
 
 #li2 {
-  list-style-image: url('../public/icon-images/apple.svg')
+  list-style-image: url("../public/icon-images/apple.svg");
 }
 
 #li3 {
-  list-style-image: url('../public/icon-images/ice_cream.svg')
+  list-style-image: url("../public/icon-images/ice_cream.svg");
 }
 
 #li4 {
-  list-style-image: url('../public/icon-images/avocado.svg')
-} 
+  list-style-image: url("../public/icon-images/avocado.svg");
+}
 
 #li5 {
-  list-style-image: url('../public/icon-images/glass.svg')
+  list-style-image: url("../public/icon-images/glass.svg");
 }
 
 .link {
@@ -331,13 +333,23 @@ button:hover:not(#remove-btn):not(:disabled) {
 }
 
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 0.9; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeout {
-  from { opacity: 0.9; }
-  to   { opacity: 0; }
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* === Cart Page === */
@@ -353,7 +365,7 @@ button:hover:not(#remove-btn):not(:disabled) {
 }
 
 .cart-card {
-   font-family: "Volkhov", serif;
+  font-family: "Volkhov", serif;
   padding: 10px;
   background: #f8f8f8;
   margin-bottom: 8px;
@@ -439,18 +451,22 @@ address a:hover {
 
 /* === Spinner === */
 .spinner {
-  border: 6px solid #f3f3f3; 
-  border-top: 6px solid #333; 
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #333;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   animation: spin 1s linear infinite;
-  margin: 20px auto; 
+  margin: 20px auto;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* === Small Smartphones 480px === */
