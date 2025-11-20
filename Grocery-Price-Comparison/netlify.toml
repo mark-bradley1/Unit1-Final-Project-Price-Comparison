@@ -1,4 +1,0 @@
-[build]
-    base = "Grocery-Price-Comparison"
-    command = "num run build"
-    publish = "dist"
