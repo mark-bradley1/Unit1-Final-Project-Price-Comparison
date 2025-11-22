@@ -104,14 +104,14 @@ const ComparisonPage = ({ addToCart }) => {
           <h3>
             Showing results for "<em>{submittedTerm}</em>"
           </h3>
-          {filteredItems.map((item) => (
+          {filteredItems.map((item) => ( // Shows the result of the search with and image
             <div key={item.id} className="item-card">
               <div className="item-image-container">
                 <img src={item.image} alt={item.name} className="item-image" />
               </div>
               <div className="item-info">
                 <h4 className="item-name">{item.name}</h4>
-                {selectedStores.map((store) => (
+                {selectedStores.map((store) => ( // Shows the pricing data for each store
                   <div key={store} className="store-row">
                     <span className="store-name">{store}:</span>
                     <span className="price">
@@ -128,7 +128,7 @@ const ComparisonPage = ({ addToCart }) => {
                     <Button
                       label="Add to Cart"
                       className="add-to-cart-btn"
-                      onClick={() => {
+                      onClick={() => { // Pop up showing that item was added to the cart
                         addToCart(item, store); // Data passed to child
                         setAddedMessage(
                           `Added ${item.name} from ${store} to cart!`
